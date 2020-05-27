@@ -124,6 +124,12 @@ class BlockChain {
       throw new Error('Not enough coins');
     }
 
+    let balance = this.getBalanceOfAddress(transaction.sender);
+    for (const tx of this.pendingTransactions) {
+      if (tx.sender === transaction.sender) balance -= tx.amount;
+      if (balance < transaction.amount) throw new Error('Not enough coins');
+    }
+
     this.pendingTransactions.push(transaction);
   }
 

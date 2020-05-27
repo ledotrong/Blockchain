@@ -8,9 +8,16 @@ const myKey = ec.keyFromPrivate(
 const walletAddress = myKey.getPublic('hex');
 
 let MyCoin = new BlockChain();
-const tx1 = new Transaction(walletAddress, 'testing public key', 10);
+MyCoin.minePendingTransactions(walletAddress);
+
+const tx1 = new Transaction(walletAddress, 'testing public key', 50);
 tx1.signTransaction(myKey);
 
+MyCoin.addTransaction(tx1);
+MyCoin.addTransaction(tx1);
+MyCoin.addTransaction(tx1);
+MyCoin.addTransaction(tx1);
+MyCoin.addTransaction(tx1);
 MyCoin.addTransaction(tx1);
 
 console.log('Starting mining');
