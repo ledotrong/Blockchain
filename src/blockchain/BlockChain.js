@@ -85,7 +85,7 @@ class BlockChain {
   }
 
   createGenesisBlock() {
-    return new Block(Date.now(), 'Initial Block', '0');
+    return new Block(Date.now(), 'Initial Block', '');
   }
 
   getLatestBlock() {
