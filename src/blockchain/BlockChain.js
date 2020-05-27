@@ -149,6 +149,21 @@ class BlockChain {
     return balance;
   }
 
+  getHistoryOfAddress(address) {
+    let history = [];
+    for (const block of this.blockChain) {
+      for (const transaction of block.transactions) {
+        if (transaction.recipient === address) {
+          history.push(transaction);
+        }
+        if (transaction.sender === address) {
+          history.push(transaction);
+        }
+      }
+    }
+    return history;
+  }
+
   validateChain() {
     for (let i = 1; i < this.blockChain.length; i++) {
       const currentBlock = this.blockChain[i];
