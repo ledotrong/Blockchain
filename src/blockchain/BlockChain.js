@@ -120,6 +120,10 @@ class BlockChain {
       throw new Error('Transaction invalid.');
     }
 
+    if (this.getBalanceOfAddress(transaction.sender) < transaction.amount) {
+      throw new Error('Not enough coins');
+    }
+
     this.pendingTransactions.push(transaction);
   }
 
